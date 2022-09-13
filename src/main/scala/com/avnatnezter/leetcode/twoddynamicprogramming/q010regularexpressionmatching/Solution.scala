@@ -1,5 +1,7 @@
 package com.avnatnezter.leetcode.twoddynamicprogramming.q010regularexpressionmatching
 
+import scala.collection.mutable
+
 class Solution {
     case class Node(c: Char, repeated: Boolean = false, next: Option[Node])
     def createStateTransitions(p: String): Option[Node] = {
@@ -18,20 +20,29 @@ class Solution {
     }
 
     def isMatch(s: String, p: String): Boolean = {
+        val cache = mutable.Map[(Int, Option[Node]), Boolean]()
+
         def dfs(i: Int, node: Option[Node]): Boolean = {
-            if (i >= s.length && node.isEmpty)
+            if (cache.get((i, node)).nonEmpty)
+                cache(i, node)
+            else if (i >= s.length && node.isEmpty)
                 true
             else if (node.isEmpty)
                 false
             else {
-                val r = i < s.length && node.exists(n => s(i) == n.c || n.c == '.')
-                if (node.exists(_.repeated))
+                val matches = i < s.length && node.exists(n => s(i) == n.c || n.c == '.')
+
+                if (node.exists(_.repeated)) cache.put(
+                    (i, node),
                     dfs(i, node.flatMap(_.next)) || // don't use star
-                            r && dfs(i + 1, node)   // use the star
-                else if (r)
-                    dfs(i + 1, node.flatMap(_.next))
+                        matches && dfs(i + 1, node)       // use the star
+                )
+                else if (matches)
+                    cache.put((i, node), dfs(i + 1, node.flatMap(_.next)))
                 else
-                    false
+                    cache.put((i, node), false)
+
+                cache((i, node))
             }
         }
 
