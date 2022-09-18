@@ -11,11 +11,11 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
         )
     }
 
-    "test1" should "work" in {
+    "test2" should "work" in {
         Solution.letterCombinations("") should be (Nil)
     }
 
-    "test1" should "work" in {
+    "test3" should "work" in {
         Solution.letterCombinations("2") should be (List("a","b","c"))
     }
 }
