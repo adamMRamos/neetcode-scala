@@ -1,4 +1,4 @@
-# Q217 Contains Duplicate
+# q217 Contains Duplicate
 The brute force approach would require us to check every number against every other.
 This would be O(n2) run time.
 
