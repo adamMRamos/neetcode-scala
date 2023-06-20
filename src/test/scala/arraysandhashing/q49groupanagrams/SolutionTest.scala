@@ -6,7 +6,9 @@ import org.scalatest.matchers.should
 
 class SolutionTest extends AnyFlatSpec with should.Matchers {
     "test1" should "work" in {
-        Solution.groupAnagrams(Array("eat","tea","tan","ate","nat","bat")) shouldEqual List(
+        Solution.groupAnagrams(Array("eat","tea","tan","ate","nat","bat"))
+                .map(_.sorted)
+                .sortBy(_.size) shouldEqual List(
             List("bat"),
             List("nat","tan"),
             List("ate","eat","tea")
