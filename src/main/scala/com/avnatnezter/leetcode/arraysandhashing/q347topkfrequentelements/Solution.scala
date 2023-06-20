@@ -4,7 +4,7 @@ import scala.collection.mutable
 
 object Solution {
     def topKFrequent(nums: Array[Int], k: Int): Array[Int] = {
-        topKFrequentBucketSort(nums, k)
+        topKFrequentHashMap(nums, k)
     }
 
     private def topKFrequentGroupBy(nums: Array[Int], k: Int): Array[Int] = nums
@@ -17,12 +17,11 @@ object Solution {
 
     private def topKFrequentHashMap(nums: Array[Int], k: Int): Array[Int] = {
         val totals = mutable.HashMap.empty[Int, Int]
-        for (n <- nums) {
-            val total = totals.getOrElseUpdate(n, 0)
-            totals.put(n, total + 1)
-        }
 
-        totals.toList.sortWith((a, b) => a._2 > b._2).map(_._1).take(k).toArray
+        for (n <- nums)
+            totals.put(n, 1 + totals.getOrElse(n, 0))
+
+        totals.toList.sortWith((a, b) => a._2 > b._2).take(k).map(_._1).toArray
     }
 
     private def topKFrequentBucketSort(nums: Array[Int], k: Int): Array[Int] = {
