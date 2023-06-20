@@ -1,6 +1,6 @@
-package arraysandhashing.q49groupanagrams
+package arraysandhashing.q049groupanagrams
 
-import com.avnatnezter.leetcode.arraysandhashing.q49groupanagrams.Solution
+import com.avnatnezter.leetcode.arraysandhashing.q049groupanagrams.Solution
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
 

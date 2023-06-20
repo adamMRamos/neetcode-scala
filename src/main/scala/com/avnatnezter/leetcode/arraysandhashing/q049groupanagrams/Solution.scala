@@ -1,4 +1,4 @@
-package com.avnatnezter.leetcode.arraysandhashing.q49groupanagrams
+package com.avnatnezter.leetcode.arraysandhashing.q049groupanagrams
 
 import scala.collection.mutable
 
