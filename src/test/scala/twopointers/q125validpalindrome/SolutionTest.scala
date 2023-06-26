@@ -16,4 +16,8 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
     "test3" should "work" in {
         Solution.isPalindrome(" ") shouldEqual true
     }
+
+    "test4" should "work" in {
+        Solution.isPalindrome("0P") shouldEqual false
+    }
 }
