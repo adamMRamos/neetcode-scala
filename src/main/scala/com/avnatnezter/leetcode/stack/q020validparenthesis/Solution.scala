@@ -4,19 +4,26 @@ import scala.collection.mutable
 
 object Solution {
     def isValid(s: String): Boolean = {
-        def opposite(c: Char): Option[Char] = c match {
+        def isCloseParenthesis(c: Char) = c match {
+            case ')' | '}' | ']' => true
+            case _ => false
+        }
+        def matchingClose(c: Char): Option[Char] = c match {
             case '(' => Some(')')
             case '{' => Some('}')
             case '[' => Some(']')
             case _ => None
         }
 
-        val stack = mutable.Stack.empty[Char]
+        val openParenthesis = mutable.Stack.empty[Char]
         for (c <- s)
-            if (stack.headOption.flatMap(opposite).contains(c))
-                stack.pop()
+            if (isCloseParenthesis(c))
+                if (openParenthesis.headOption.flatMap(matchingClose).contains(c))
+                    openParenthesis.pop()
+                else
+                    return false
             else
-                stack.push(c)
-        stack.isEmpty
+                openParenthesis.push(c)
+        openParenthesis.isEmpty
     }
 }
