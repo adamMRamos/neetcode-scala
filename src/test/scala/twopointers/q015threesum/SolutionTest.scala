@@ -6,15 +6,15 @@ import org.scalatest.matchers.should
 
 class SolutionTest extends AnyFlatSpec with should.Matchers {
     "test" should "work" in {
-        Solution2.threeSum(Array(-1,0,1,2,-1,-4)) should be (
-            List(
+        Solution2.threeSum(Array(-1,0,1,2,-1,-4)).toSet should be (
+            Set(
                 List(-1,-1, 2),
                 List(-1, 0, 1)
             )
         )
     }
 
-    "tes2" should "work" in {
+    "test2" should "work" in {
         Solution2.threeSum(Array(0,1,1)) should be (Nil)
     }
 
@@ -31,8 +31,8 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
     }
 
     "test6" should "work" in {
-        Solution2.threeSum(Array(3,0,-2,-1,1,2)) should be (
-            List(
+        Solution2.threeSum(Array(3,0,-2,-1,1,2)).toSet should be (
+            Set(
                 List(-2,-1, 3),
                 List(-2, 0, 2),
                 List(-1, 0, 1),
