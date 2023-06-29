@@ -27,7 +27,7 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
     }
 
     "test5" should "work" in {
-        Solution2.threeSum(Array(-2,0,0,2,2)) should be (List(List(-2,0,2)))
+        Solution2.threeSum(Array(-2,-2,0,0,2,2)) should be (List(List(-2,0,2)))
     }
 
     "test6" should "work" in {
