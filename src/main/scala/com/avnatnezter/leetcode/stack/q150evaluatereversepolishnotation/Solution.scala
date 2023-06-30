@@ -12,12 +12,10 @@ object Solution {
         )
 
         val answer = mutable.Stack.empty[Int]
-
-        for (e <- tokens)
-            answer push operations
-                    .get(e).map(_(answer.pop, answer.pop))
-                    .getOrElse(e.toInt)
-
+        for (e <- tokens) answer push operations
+                .get(e)
+                .map(_(answer.pop, answer.pop))
+                .getOrElse(e.toInt)
         answer.pop
     }
 }
