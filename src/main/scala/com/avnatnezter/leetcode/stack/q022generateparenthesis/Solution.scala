@@ -8,7 +8,10 @@ object Solution {
     }
 
     private def generateParenthesisWhileLoop(n: Int): List[String] = {
-        case class State(open: Int, close: Int, str: String)
+        case class State(open: Int, close: Int, str: String) {
+            def pushClose: State = this.copy(close = close + 1, str = str + ')')
+            def pushOpen: State = this.copy(open = open + 1, str = str + '(')
+        }
 
         val answer = mutable.ListBuffer.empty[String]
         val states = mutable.Stack.empty[State]
@@ -17,9 +20,9 @@ object Solution {
         while (states.nonEmpty) {
             val s = states.pop()
             if (s.close < s.open)
-                states push s.copy(close = s.close + 1, str = s.str + ")")
+                states push s.pushClose
             if (s.open < n)
-                states push s.copy(open = s.open + 1, str = s.str + "(")
+                states push s.pushOpen
 
             if (s.open == n && s.close == n)
                 answer += s.str
