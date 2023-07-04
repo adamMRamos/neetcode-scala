@@ -12,4 +12,8 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
     "test2" should "work" in {
         Solution.trap(Array(4,2,0,3,2,5)) should be(9)
     }
+
+    "test3" should "work" in {
+        Solution.trap(Array(4,2,3)) should be(1)
+    }
 }
