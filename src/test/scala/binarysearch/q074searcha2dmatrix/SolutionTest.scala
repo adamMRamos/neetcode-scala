@@ -26,4 +26,18 @@ class SolutionTest extends AnyFlatSpec with should.Matchers {
 
     Solution.searchMatrix(matrix, target) shouldBe false
   }
+
+  "searchMatrix target is 0" should "be false" in {
+    val matrix = Array(Array(1, 1))
+    val target = 0
+
+    Solution.searchMatrix(matrix, target) shouldBe false
+  }
+
+  "searchMatrix target is 1" should "be true" in {
+    val matrix = Array(Array(1))
+    val target = 1
+
+    Solution.searchMatrix(matrix, target) shouldBe true
+  }
 }
